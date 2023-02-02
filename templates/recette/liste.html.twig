@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Accueil | Liste
+{% endblock %}
+
+{% block body %}
+
+    <div class="recette_list_tri">
+        <a href="{{ path('recette_tri', {'param': 'nom'}) }}">
+            <input type="submit" value="Trier par Nom" name="tri_nom">
+        </a>
+        <a href="{{ path('recette_tri', {'param': 'est_favori'}) }}">
+            <input type="submit" value="Trier par Favori" name="tri_Favori">
+        </a>
+    </div>
+
+    <section class="recette-list">
+
+        {% for recette in recettes %}
+                <fieldset>
+                <h3>{{ recette.nom }}</h3>
+                <a href="{{ path('recette_details', {'id': recette.id}) }}">
+                     <img src="{{ asset('images/'~recette.image) }}" alt="{{ recette.image }}">
+                </a>
+                <div>
+
+                    <a href="{{ path('recette_estFavori', {'id' : recette.id}) }}">
+                        {% if recette.isEstFavori == '0' %}
+                             <input type="submit" value="Ajouter aux Favoris">
+                        {% else %}
+                            <input type="submit" value="Retirer des Favoris">
+                        {% endif%}
+                        <input type="hidden" name="recette-id" value="{{ recette.id }}">
+                    </a>
+                </div>
+                </fieldset>
+        {% endfor %}
+    </section>
+
+{% endblock %}
+

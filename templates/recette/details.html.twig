@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+<div class="header_home">
+    <a href="{{ path('recette_details', {'id': recette.id}) }}">Details</a>
+</div>
+{% endblock %}
+
+{% block body %}
+
+    <section class="recette_detail">
+        <div class="recette">
+            <img src="{{ asset('images/'~recette.image) }}" alt="{{ recette.image }}">
+            <ul>
+                <li>{{ recette.nom }}</li>
+                <li>{{ recette.ingredient1 }} : {{  recette.quantite1 }}</li>
+                <li>{{ recette.ingredient2 }} : {{  recette.quantite2 }}</li>
+                <li>{{ recette.ingredient3 }} : {{  recette.quantite3 }}</li>
+                <p>{{ recette.description }}</p>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

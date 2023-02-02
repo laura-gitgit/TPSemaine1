@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}3,2,1 Recettes{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    <header class="container">
+
+        <div class="header_home">
+            <a href="{{ path('home') }}">Accueil</a>
+            <a href="{{ path('recette_liste') }}">Liste des Recettes</a>
+            {% block header %}{% endblock %}
+        </div>
+
+    </header>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    <footer>
+
+    </footer>
+
+    </body>
+</html>
