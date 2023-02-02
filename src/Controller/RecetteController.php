@@ -15,6 +15,21 @@ class RecetteController extends AbstractController
     #[Route('/liste', name: '_liste')]
     public function recettes(RecetteRepository $recetteRepository): Response
     {
+        //TODO vérifier cookie, si oui rediriger vers fonction
+        /**
+         * public function index(Request $request, RecetteRepository $recetteRepository): Response
+        {
+        $param = $request->cookies->get('tri_recettes', 'nom');
+
+        if($param === 'nom'){
+        $recettes = $recetteRepository->findByName(['nom' => $param]);
+        }elseif ($param === 'est_favori'){
+        $recettes = $recetteRepository->findByEstFavori(['est_favori' => $param]);
+        }
+
+        return $this->render('recette/liste.html.twig', compact('recettes'));
+        }
+         */
         $recettes = $recetteRepository->findAll();
         return $this->render('recette/liste.html.twig', compact('recettes'));
     }
