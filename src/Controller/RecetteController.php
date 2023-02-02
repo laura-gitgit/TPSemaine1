@@ -53,8 +53,7 @@ class RecetteController extends AbstractController
     public function updateFavori (int $id, RecetteRepository $recetteRepository, EntityManagerInterface $em) : Response
     {
         $objet = $recetteRepository->findOneBy(['id'=> $id]);
-        $favori = $objet->isEstFavori();
-        $objet->setEstFavori(!$favori);
+        $objet->setEstFavori(!$objet->isEstFavori());
 
         //modifier la base de donnée
         $em->persist($objet); //persiste en base de données

@@ -26,13 +26,18 @@
                 <div>
 
                     <a href="{{ path('recette_estFavori', {'id' : recette.id}) }}">
-                        {% if recette.isEstFavori == '0' %}
-                             <input type="submit" value="Ajouter aux Favoris">
-                        {% else %}
-                            <input type="submit" value="Retirer des Favoris">
-                        {% endif%}
-                        <input type="hidden" name="recette-id" value="{{ recette.id }}">
+                          <input type="submit" value="{{ recette.isEstFavori == '0' ? 'Ajouter aux Favoris' : 'Retirer des Favoris' }}">
+                          <input type="hidden" name="recette-id" value="{{ recette.id }}">
                     </a>
+
+{#                    <a href="{{ path('recette_estFavori', {'id' : recette.id}) }}">#}
+{#                        {% if recette.isEstFavori == '0' %}#}
+{#                             <input type="submit" value="Ajouter aux Favoris">#}
+{#                        {% else %}#}
+{#                            <input type="submit" value="Retirer des Favoris">#}
+{#                        {% endif%}#}
+{#                        <input type="hidden" name="recette-id" value="{{ recette.id }}">#}
+{#                    </a>#}
                 </div>
                 </fieldset>
         {% endfor %}
